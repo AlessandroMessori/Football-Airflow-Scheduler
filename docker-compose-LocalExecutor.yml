@@ -26,7 +26,7 @@ services:
         volumes:
             - ./dags:/usr/local/airflow/dags
             - ./requirements.txt:/usr/local/airflow/requirements.txt
-            - ./scraper:/usr/local/airflow/scraper
+            - ./dags/scraper:/usr/local/airflow/dags/scraper
             - ./__init__.py:/usr/local/airflow/__init__.py
             # - ./plugins:/usr/local/airflow/plugins
         ports:

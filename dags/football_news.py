@@ -8,7 +8,7 @@ from airflow.operators.bash_operator import BashOperator
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': airflow.utils.dates.days_ago(2),
+    'start_date': airflow.utils.dates.days_ago(1),
     'email': ['airflow@example.com'],
     'email_on_failure': False,
     'email_on_retry': False,
@@ -20,13 +20,14 @@ dag = DAG(
     'football_news',
     default_args=default_args,
     description='Football News Data Pipeline',
-    schedule_interval="35 15 * * * "
+    schedule_interval="*/2 * * * *",
+    catchup=False
 )
 
 t1 = BashOperator(
     task_id='scrape',
     depends_on_past=True,
-    bash_command='python dags/scraper/crawl.py italian /usr/local/airflow/data',
+    bash_command='python /usr/local/airflow/dags/scraper/crawl.py italian /usr/local/airflow/data',
     dag=dag,
 )
 
