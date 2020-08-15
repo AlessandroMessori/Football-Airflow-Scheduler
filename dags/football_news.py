@@ -9,10 +9,10 @@ default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
     'start_date': airflow.utils.dates.days_ago(1),
-    'email': ['airflow@example.com'],
+    'email': ['messori.alessandro.98@gmail.com'],
     'email_on_failure': False,
     'email_on_retry': False,
-    'retries': 0,
+    'retries': 1,
     'retry_delay': timedelta(minutes=5),
 }
 
@@ -26,17 +26,16 @@ dag = DAG(
 
 t1 = BashOperator(
     task_id='scrape',
-    depends_on_past=True,
-    bash_command='python /usr/local/airflow/dags/scraper/crawl.py italian /usr/local/airflow/data',
-    dag=dag,
+     bash_command='python /usr/local/airflow/dags/scraper/crawl.py italian /usr/local/airflow/data',
+     #bash_command='echo Hello World',
+     dag=dag,
 )
 
-'''t2 = BashOperator(
+t2 = BashOperator(
     task_id='upload',
     depends_on_past=True,
-    bash_command='python dags/scraper/upload.py',
+    bash_command='python /usr/local/airflow/dags/scraper/upload.py',
     dag=dag,
 )
 
-t1 >> t2'''
-t1
+t1 >> t2
