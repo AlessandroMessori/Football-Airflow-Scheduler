@@ -10,7 +10,7 @@ default_args = {
     'depends_on_past': False,
     'start_date': airflow.utils.dates.days_ago(1),
     'email': ['messori.alessandro.98@gmail.com'],
-    'email_on_failure': False,
+    'email_on_failure': True,
     'email_on_retry': False,
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
@@ -20,7 +20,7 @@ dag = DAG(
     'football_news',
     default_args=default_args,
     description='Football News Data Pipeline',
-    schedule_interval="*/2 * * * *",
+    schedule_interval="0 20 * * *",
     catchup=False
 )
 
