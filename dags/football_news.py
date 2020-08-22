@@ -26,15 +26,14 @@ dag = DAG(
 
 t1 = BashOperator(
     task_id='scrape',
-     bash_command='python /usr/local/airflow/dags/scraper/crawl.py italian /usr/local/airflow/data',
-     #bash_command='echo Hello World',
-     dag=dag,
+    bash_command='python /usr/local/airflow/dags/scraper/crawl.py italian /usr/local/airflow/data',
+    dag=dag,
 )
 
 t2 = BashOperator(
     task_id='upload',
     depends_on_past=True,
-    bash_command='python /usr/local/airflow/dags/scraper/upload.py',
+    bash_command='python /usr/local/airflow/dags/utils/main.py',
     dag=dag,
 )
 

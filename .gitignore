@@ -30,4 +30,6 @@ __pycache__
 .idea/
 
 dags/scraper/
-dags/s3Utils
+dags/utils
+
+data/
