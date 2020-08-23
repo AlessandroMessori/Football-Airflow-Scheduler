@@ -1,0 +1,13 @@
+{
+  "languages": [
+    {
+      "id": "it",
+      "name": "italian"
+    },
+    {
+      "id": "en",
+      "name": "english"
+    }
+  ],
+  "writeDir": []
+}

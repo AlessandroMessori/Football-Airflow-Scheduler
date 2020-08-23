@@ -26,9 +26,7 @@ services:
         volumes:
             - ./dags:/usr/local/airflow/dags
             - ./requirements.txt:/usr/local/airflow/requirements.txt
-            - ./dags/scraper:/usr/local/airflow/dags/scraper
-            - ./__init__.py:/usr/local/airflow/__init__.py
-              # - ~/.aws/credentials:~/.aws/credentials
+            - ./config.json:/usr/local/airflow/config.json
         ports:
             - "8080:8080"
         command: webserver
