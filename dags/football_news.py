@@ -31,10 +31,24 @@ t1 = BashOperator(
 )
 
 t2 = BashOperator(
-    task_id='upload',
+    task_id='upload_raw',
     depends_on_past=False,
-    bash_command='python /usr/local/airflow/dags/utils/main.py',
+    bash_command='python /usr/local/airflow/dags/utils/main.py football-news data',
     dag=dag,
 )
 
-t1 >> [t2]
+t3 = BashOperator(
+    task_id='count',
+    depends_on_past=False,
+    bash_command='python /usr/local/airflow/dags/analytics/main.py ',
+    dag=dag,
+)
+
+t4 = BashOperator(
+    task_id='upload_counters',
+    depends_on_past=False,
+    bash_command='python /usr/local/airflow/dags/utils/main.py football-counters counters',
+    dag=dag,
+)
+
+t1 >> [t2] >> [t3] >> [t4]
