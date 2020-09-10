@@ -40,7 +40,7 @@ t2 = BashOperator(
 t3 = BashOperator(
     task_id='count',
     depends_on_past=False,
-    bash_command='python /usr/local/airflow/dags/analytics/main.py ',
+    bash_command='python /usr/local/airflow/dags/analytics/count.py ',
     dag=dag,
 )
 
@@ -51,4 +51,11 @@ t4 = BashOperator(
     dag=dag,
 )
 
-t1 >> t2 >> t3 >> t4
+t5 = BashOperator(
+    task_id='save_to_mongo',
+    depends_on_past=False,
+    bash_command='python /usr/local/airflow/dags/analytics/save.py',
+    dag=dag,
+)
+
+t1 >> t2 >> t3 >> t4 >> t5
