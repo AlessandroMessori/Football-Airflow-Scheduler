@@ -1,0 +1,9 @@
+[submodule "dags/Football-News-Analytics"]
+	path = dags/Football-News-Analytics
+	url = https://github.com/AlessandroMessori/Football-News-Analytics
+[submodule "dags/Football-Scraper"]
+	path = dags/Football-Scraper
+	url = https://github.com/AlessandroMessori/Football-Scraper
+[submodule "dags/Football-S3-Utils"]
+	path = dags/Football-S3-Utils
+	url = https://github.com/AlessandroMessori/Football-S3-Utils
